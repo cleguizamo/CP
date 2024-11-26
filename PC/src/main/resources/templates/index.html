@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Pensamientos</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h1>App de Pensamientos</h1>
+    <form action="/pensamiento" method="post">
+        <textarea name="contenido" placeholder="Comparte tus pensamientos..." required></textarea><br>
+        <button type="submit">Publicar</button>
+    </form>
+    <div>
+        <h2>Todos los Pensamientos:</h2>
+        <ul>
+            <li th:each="pensamiento : ${pensamientos}">
+                <p th:text="${pensamiento.contenido}"></p>
+                <button th:onclick="'/megusta/' + ${pensamiento.id}">Me gusta (<span th:text="${pensamiento.meGusta}"></span>)</button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
